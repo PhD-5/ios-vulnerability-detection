@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rules version="1.0">
+    <RuleDefinitions>
+        <RuleID>1-1-15</RuleID>
+        <RuleName>未进行越狱检测2</RuleName>  <!--具体描述该安全规则的所属类（可随意修改）-->
+        <Description>(待详细)未进行越狱检测，没有检测Cydia.app的存在性</Description>  <!--规则描述（可随意修改）-->
+        <RuleType>2</RuleType><!--规则类型: 1、缺陷API或者存在缺陷的API组合，匹配上表示存在漏洞；
+                                           2、应有API或者正确的API组合，若没匹配上，则存在问题-->
+        <Content>
+            <Function name="_objc_msgSend" type="true"> 
+                <Parameter>X1=fileExistsAtPath:</Parameter>
+                <Parameter>X2=/Applications/Cydia.app</Parameter>
+            </Function>
+        </Content>
+        <riskLevel>1</riskLevel><!--*危险级别，需指定0（无），1（低），2（中），3（高）-->
+        <solution>使用[NSFileManager fileExistsAtPath:]检测Cydia.app是否存在</solution><!--可随意修改-->
+        <isEnable>true</isEnable><!--* 规则是否启用，true启用，false不启用-->
+    </RuleDefinitions>
+</Rules>
