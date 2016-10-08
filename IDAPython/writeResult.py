@@ -22,12 +22,11 @@ def writeBL(BL_dict):
 	doc.writexml(f,addindent = ' '*4,newl ='\n',encoding = 'utf8')
 	f.close()
 '''	
+doc = Document()
+root = doc.createElement('Root')
+doc.appendChild(root)
 	
 def writeMsg(BL_dict):
-	doc = Document()
-	root = doc.createElement('Root')
-	doc.appendChild(root)
-	
 	for func_name in BL_dict.keys():
 		func_ele = doc.createElement('function')
 		func_ele.setAttribute('name',func_name)
@@ -49,11 +48,15 @@ def writeMsg(BL_dict):
 				#regs_ele.appendChild(regs_text)
 				#msg_ele.appendChild(regs_ele)
 				
+	
+	
+def writeToXml():
 	f = open('bl.xml','w')
 	doc.writexml(f, addindent = '',newl ='\n',encoding = 'utf8')
 	f.close()
 	
-
+	
+	
 '''def main():
 	msg_send_dict = dict()
 	regs1 = dict()
